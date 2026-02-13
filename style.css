@@ -29,39 +29,73 @@ canvas {
     outline: none;
 }
 
-/* Header (Overlay on Viewport) */
-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+/* Site Header */
+#site-header {
+    background: #000;
     color: white;
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+#site-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #4CAF50;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+#site-header nav {
+    display: flex;
+    gap: 20px;
+}
+
+#site-header nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#site-header nav a:hover {
+    color: #4CAF50;
+}
+
+/* Viewport Overlay */
+.viewport-overlay {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px 20px;
     text-align: center;
     pointer-events: none; /* Let clicks pass through */
     z-index: 5;
-    box-sizing: border-box;
-}
-
-h1 {
-    margin: 0;
-    font-size: 24px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
 }
 
 .controls-help {
     font-size: 14px;
-    opacity: 0.8;
-    margin-top: 5px;
+    opacity: 0.9;
+    margin: 0;
 }
 
 /* Message Box (Overlay on Viewport) */
 #msg-box {
     position: absolute;
-    top: 80px;
+    top: 70px;
     left: 50%;
     transform: translateX(-50%);
     color: white;

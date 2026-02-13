@@ -16,16 +16,24 @@
         }
     </script>
 
-    <!-- UI Structure -->
     <div id="app-wrapper">
+        <!-- Site Header -->
+        <header id="site-header">
+            <div class="logo">Wild Life Explorer</div>
+            <nav>
+                <a href="#viewport">3D View</a>
+                <a href="#details-panel">About</a>
+                <a href="#footer-area">Credits</a>
+            </nav>
+        </header>
+
         <!-- 3D Viewport -->
         <div id="viewport">
-            <header>
-                <h1>Wild Life Explorer</h1>
+            <div class="viewport-overlay">
                 <div class="controls-help">
                     Left Click: Rotate | Right Click: Pan | Scroll: Zoom
                 </div>
-            </header>
+            </div>
             <div id="msg-box">Initializing 3D Environment...</div>
         </div>
 
@@ -53,7 +61,7 @@
         
         <div id="footer-area">
             <footer>
-                <p>&copy; 2026 Interactive 3D Viewer | Powered by Three.js</p>
+                <p>Created by Abinash Kumar Baruah | &copy; 2026 Interactive 3D Viewer</p>
             </footer>
         </div>
     </div>
