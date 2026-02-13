@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Realistic Lion Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <!-- UI Overlay -->
+    <div id="ui-container">
+        <header>
+            <h1>Wild Life Explorer</h1>
+            <div class="controls-help">
+                Left Click: Rotate | Right Click: Pan | Scroll: Zoom
+            </div>
+        </header>
+        
+        <main id="info-card">
+            <h2>Bengal Tiger</h2>
+            <p>The Bengal tiger is a population of the <i>Panthera tigris tigris</i> subspecies. It ranks among the biggest wild cats alive today.</p>
+            <div class="stats">
+                <div><strong>Habitat:</strong> Tropical forests & Grasslands</div>
+                <div><strong>Status:</strong> Endangered</div>
+            </div>
+        </main>
+
+        <div id="msg-box">Initializing 3D Environment...</div>
+        
+        <div id="footer-area">
+            <div id="animation-controls">
+                <!-- Buttons injected by JS -->
+            </div>
+            <footer>
+                <p>&copy; 2026 Interactive 3D Viewer | Powered by Three.js</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Main Logic -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
