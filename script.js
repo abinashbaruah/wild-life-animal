@@ -36,7 +36,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.minDistance = 2;
 controls.maxDistance = 400;
-controls.maxPolarAngle = Math.PI / 2 - 0.05; // Don't go below ground
+controls.maxPolarAngle = Math.PI; // Allow viewing from below
 
 // 3. Add Realistic Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
