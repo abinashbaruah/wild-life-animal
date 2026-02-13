@@ -100,8 +100,8 @@ loader.load(
         lionGroup.add(model);
         
         // 4. Adjust Camera to fit
-        const fitOffset = 10.0; // Increased multiplier for normal view (zoomed out)
-        const fitHeight = 3.0; // Slightly higher camera angle
+        const fitOffset = 15.0; // Increased multiplier for normal view (zoomed out)
+        const fitHeight = 4.0; // Slightly higher camera angle
         const boxSize = 10; // Target size
         
         const dist = boxSize * fitOffset;
