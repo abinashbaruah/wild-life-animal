@@ -12,20 +12,23 @@ function updateMessage(msg) {
 }
 
 // 1. Set up the Scene, Camera, and Renderer
+const viewport = document.getElementById('viewport') || document.body;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87CEEB); // Sky blue background
 // Add some fog for depth
 scene.fog = new THREE.Fog(0x87CEEB, 50, 500);
 
 // The camera is our "eyes"
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
+const width = viewport.clientWidth || window.innerWidth;
+const height = viewport.clientHeight || window.innerHeight;
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 2000);
 camera.position.set(0, 40, 100); // High and far back
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(width, height);
 renderer.shadowMap.enabled = true; // Enable shadows
 renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Softer shadows
-document.body.appendChild(renderer.domElement);
+viewport.appendChild(renderer.domElement);
 
 // 2. Add OrbitControls
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -447,9 +450,11 @@ scene.add(grassMesh);
 
 // 5. Make it Responsive (Handle window resizing)
 window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    const width = viewport.clientWidth || window.innerWidth;
+    const height = viewport.clientHeight || window.innerHeight;
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(width, height);
 });
 
 // 6. Animation Loop

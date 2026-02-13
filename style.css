@@ -1,34 +1,47 @@
 /* Reset and Base Styles */
 body { 
     margin: 0; 
-    overflow: hidden; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #000;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* App Wrapper for Split Layout */
+#app-wrapper {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* 3D Viewport */
+#viewport {
+    width: 100%;
+    height: 85vh; /* Takes up most of the screen */
+    position: relative;
+    overflow: hidden;
 }
 
 canvas { 
-    display: block; 
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    outline: none;
 }
 
-/* UI Overlay */
-#ui-container {
+/* Header (Overlay on Viewport) */
+header {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    pointer-events: none; /* Let clicks pass through to canvas */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-header {
     background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
     color: white;
     padding: 20px;
     text-align: center;
-    pointer-events: auto;
+    pointer-events: none; /* Let clicks pass through */
+    z-index: 5;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -45,10 +58,10 @@ h1 {
     margin-top: 5px;
 }
 
-/* Message Box */
+/* Message Box (Overlay on Viewport) */
 #msg-box {
     position: absolute;
-    top: 100px;
+    top: 80px;
     left: 50%;
     transform: translateX(-50%);
     color: white;
@@ -58,74 +71,90 @@ h1 {
     font-size: 14px;
     backdrop-filter: blur(5px);
     transition: opacity 0.3s;
-    pointer-events: auto;
-    z-index: 10;
+    pointer-events: none;
+    z-index: 5;
+    text-align: center;
+    width: max-content;
 }
 
-/* Info Card (Main Content) */
-#info-card {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    width: 300px;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
+/* Controls Strip (Buttons) */
+#controls-strip {
+    background: #111;
     padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    pointer-events: auto;
-    border-left: 4px solid #4CAF50;
-    transition: opacity 0.5s;
-    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 4px solid #4CAF50;
+    position: relative;
+    z-index: 20;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-#info-card:hover {
-    opacity: 1;
+/* Bottom Panel (Info Only) */
+#details-panel {
+    background: #1a1a1a;
+    color: white;
+    padding: 40px 20px 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Border moved to controls strip */
+    position: relative;
+    z-index: 10;
+    min-height: 300px; /* Ensure substantial height */
+}
+
+#info-card {
+    max-width: 800px;
+    text-align: center;
 }
 
 #info-card h2 {
     margin-top: 0;
     color: #4CAF50;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 10px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#info-card p {
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 #info-card .stats {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 15px;
+    gap: 20px;
+    margin-top: 10px;
     font-size: 0.9em;
-    opacity: 0.9;
+    opacity: 0.8;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-/* Footer Area */
 #footer-area {
-    width: 100%;
-    pointer-events: auto;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    padding-bottom: 10px;
+    background: #0d0d0d;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+    border-top: 1px solid #333;
 }
 
-/* Animation Controls */
 #animation-controls {
     display: flex;
     gap: 10px;
-    justify-content: center;
-    padding: 15px;
     flex-wrap: wrap;
-    background: none; /* Background moved to footer-area */
+    justify-content: center;
 }
 
 footer {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 12px;
-    padding: 5px;
 }
 
-
+/* Button Styles */
 button {
     padding: 10px 20px;
     cursor: pointer;
@@ -135,7 +164,6 @@ button {
     border-radius: 30px;
     font-size: 14px;
     transition: all 0.2s ease;
-    backdrop-filter: blur(5px);
 }
 
 button:hover {
@@ -153,14 +181,29 @@ button.active {
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
 }
 
-/* Loading Spinner */
-#loader {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    pointer-events: none;
-    display: none; /* Hidden by default, shown via JS */
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    #app-wrapper {
+        height: auto;
+        display: block;
+    }
+    
+    #viewport {
+        height: 60vh; /* Fixed height for 3D view on mobile */
+        min-height: 300px;
+    }
+
+    #details-panel {
+        /* No border needed here on mobile either */
+        box-shadow: none; /* Simplify on mobile */
+    }
+
+    #info-card {
+        max-width: none; /* Full width */
+    }
 }

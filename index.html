@@ -16,30 +16,42 @@
         }
     </script>
 
-    <!-- UI Overlay -->
-    <div id="ui-container">
-        <header>
-            <h1>Wild Life Explorer</h1>
-            <div class="controls-help">
-                Left Click: Rotate | Right Click: Pan | Scroll: Zoom
-            </div>
-        </header>
-        
-        <main id="info-card">
-            <h2>Bengal Tiger</h2>
-            <p>The Bengal tiger is a population of the <i>Panthera tigris tigris</i> subspecies. It ranks among the biggest wild cats alive today.</p>
-            <div class="stats">
-                <div><strong>Habitat:</strong> Tropical forests & Grasslands</div>
-                <div><strong>Status:</strong> Endangered</div>
-            </div>
-        </main>
+    <!-- UI Structure -->
+    <div id="app-wrapper">
+        <!-- 3D Viewport -->
+        <div id="viewport">
+            <header>
+                <h1>Wild Life Explorer</h1>
+                <div class="controls-help">
+                    Left Click: Rotate | Right Click: Pan | Scroll: Zoom
+                </div>
+            </header>
+            <div id="msg-box">Initializing 3D Environment...</div>
+        </div>
 
-        <div id="msg-box">Initializing 3D Environment...</div>
-        
-        <div id="footer-area">
+        <!-- Animation Controls Strip -->
+        <div id="controls-strip">
             <div id="animation-controls">
                 <!-- Buttons injected by JS -->
             </div>
+        </div>
+
+        <!-- Info Section -->
+        <section id="details-panel">
+            <main id="info-card">
+                <h2>Bengal Tiger</h2>
+                <p>The Bengal tiger is a population of the <i>Panthera tigris tigris</i> subspecies. It ranks among the biggest wild cats alive today.</p>
+                <p>Native to the Indian subcontinent, these majestic creatures are known for their striking orange coat with black stripes. Each tiger has a unique stripe pattern, much like a human fingerprint.</p>
+                <p>They are apex predators, primarily hunting large ungulates such as chital, sambar, and gaur. Despite their size, they are stealthy hunters, relying on camouflage and power to ambush prey.</p>
+                <div class="stats">
+                    <div><strong>Habitat:</strong> Tropical forests & Grasslands</div>
+                    <div><strong>Status:</strong> Endangered</div>
+                    <div><strong>Lifespan:</strong> 10-15 Years</div>
+                </div>
+            </main>
+        </section>
+        
+        <div id="footer-area">
             <footer>
                 <p>&copy; 2026 Interactive 3D Viewer | Powered by Three.js</p>
             </footer>
