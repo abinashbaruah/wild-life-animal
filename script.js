@@ -97,17 +97,6 @@ loader.load(
         // Also ensure the group itself is lifted
         lionGroup.position.y = 5.0; // Another 5 units (total 10 units up!)
         
-        // Add a visual marker for the "ground" relative to the tiger
-        const groundMarker = new THREE.Mesh(
-            new THREE.RingGeometry(2, 2.2, 32),
-            new THREE.MeshBasicMaterial({ color: 0xff0000, side: THREE.DoubleSide })
-        );
-        groundMarker.rotation.x = -Math.PI / 2;
-        // The ring is at local y=0 of the model group.
-        // If feet are at y=0, ring is at feet level.
-        model.add(groundMarker);
-
-
         lionGroup.add(model);
         
         // 4. Adjust Camera to fit
